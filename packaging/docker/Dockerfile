@@ -39,7 +39,8 @@ RUN mkdir -p /usr/share/php/smarty3/ && \
 RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
 COPY . /var/www
 RUN rmdir /var/www/html && \
-    mv /var/www/htdocs /var/www/html && \
+    mkdir -p /var/www/html && \
+    mv /var/www/htdocs /var/www/html/ssp && \
     mkdir -p /var/www/templates_c && \
     chown -R www-data: /var/www/templates_c
 ENV LC_CTYPE=en_US.UTF-8
